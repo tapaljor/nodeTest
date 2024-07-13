@@ -8,7 +8,7 @@ const nodemailer = require("nodemailer");
 const exphbs = require("express-handlebars");
 
 const { MongoClient, ObjectId } = require("mongodb");
-const uri = "mongodb+srv://tapaljor:i9RpKylUAbwyJYjh@mymongo.nuhxntf.mongodb.net/?retryWrites=true&w=majority&appName=MyMongo";
+const uri = "mongodb+srv://tapaljor:A81Z6ZvQjnhud1Xx@tpcluster.pmqosjh.mongodb.net/?retryWrites=true&w=majority&appName=TPCluster";
 
 // Middleware setup
 app.use(express.json());
