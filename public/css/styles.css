@@ -1,0 +1,67 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 20px;
+}
+h1 {
+    color: #333;
+}
+.table-container {
+    margin: 20px auto;
+    max-width: 1200px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+}
+th, td {
+    padding: 5px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+th {
+    background-color: #333;
+    color: white;
+}
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+tr:hover {
+    background-color: #e9e9e9;
+}
+header {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    gap: 1rem;
+}
+#leftHead {
+    grid-column: 1/2;
+    border: 1px solid red;
+}
+#rightHead {
+    grid-column: 2/3;
+    border: 1px solid green;
+} 
+main {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    gap: 1rem;
+}
+aside {
+    grid-column: 1/2;
+    border: 1px solid pink;
+}
+article {
+    grid-column: 2/3;
+    border: 1px solid black;
+}
+#searchResult {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
