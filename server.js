@@ -74,7 +74,7 @@ app.set("views", path.join(__dirname, "/views"));
             result = await db.collection("main").find({
                 _id: new ObjectId(req.query.id)
             }).toArray();
-            res.render('search', { result });
+            res.render('profile', { result });
         } catch(err) {
             console.log(`Error: ${err}`);
         }

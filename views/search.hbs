@@ -3,6 +3,7 @@
  <table>
         <thead>
             <tr>
+                <th>Unit</th>
                 <th>Name</th>
                 <th>Age</th>
                 <th>Gender</th>
@@ -17,6 +18,7 @@
         <tbody>
             {{#each result}}
             <tr>
+                <td>{{this.unit}}</td>
                 <td><a href="/displayOne?id={{this._id}}">{{this.name}}</a></td>
                 <td>{{this.age}}</td>
                 <td>{{this.gender}}</td>
