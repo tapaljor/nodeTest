@@ -34,7 +34,7 @@ app.set("views", path.join(__dirname, "/views"));
         
         // Select the database and collection
         db = connect.db("resident");
-        collection = db.collection("resident");
+        collection = db.collection("main");
         
         // Optional: Fetch initial data or perform other setup operations
         data = await collection.find({}).toArray();
@@ -47,7 +47,7 @@ app.set("views", path.join(__dirname, "/views"));
     app.post("/submit", async (req, res) => {
         data = req.body;
         try {
-            const result = await db.collection("resident").insertOne(data);
+            const result = await db.collection("main").insertOne(data);
             res.render('home');
         } catch (err) {
             console.log(`Error: ${err}`);
@@ -60,7 +60,7 @@ app.set("views", path.join(__dirname, "/views"));
         delete data._id;
 
         try {
-            const result = await db.collection("resident").updateOne(
+            const result = await db.collection("main").updateOne(
                 { _id: id },
                 { $set: data }
             );
@@ -71,17 +71,17 @@ app.set("views", path.join(__dirname, "/views"));
     });
     app.get("/displayOne", async(req, res) => {
         try {
-            result = await db.collection("resident").find({
+            result = await db.collection("main").find({
                 _id: new ObjectId(req.query.id)
             }).toArray();
-            res.render('search', { result });
+            res.render('profile', { result });
         } catch(err) {
             console.log(`Error: ${err}`);
         }
     });
     app.get("/displayAll", async (req, res) => {
         try {
-            const result = await db.collection("resident").find({}).toArray();
+            const result = await db.collection("main").find({}).toArray();
             res.render("search", { result });
         } catch(err) {
             console.log(`Error: ${err}`);
@@ -90,7 +90,7 @@ app.set("views", path.join(__dirname, "/views"));
     app.get("/searchName", async (req, res) => {
         try {
             const regex = new RegExp(req.query.q, 'i');//case not sensitive
-            const result = await db.collection("resident").find( {
+            const result = await db.collection("main").find( {
                 name: { $regex: regex }
             }).toArray();
             res.json(result);
@@ -101,7 +101,7 @@ app.set("views", path.join(__dirname, "/views"));
     });
     app.get("/edit", async (req, res) => {
         try {
-            const result = await db.collection("resident").find({
+            const result = await db.collection("main").find({
                 _id: new ObjectId(req.query.id)
             }).toArray();
             res.render( "update", { result } );
@@ -111,7 +111,7 @@ app.set("views", path.join(__dirname, "/views"));
     });
     app.get("/delete", async (req, res) => {
         try {
-            await db.collection("resident").deleteOne({
+            await db.collection("main").deleteOne({
                 _id: new ObjectId(req.query.id)
             });
             res.redirect("/displayAll");
