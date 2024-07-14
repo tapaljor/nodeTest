@@ -1,0 +1,22 @@
+{{>header}}
+<section class="profile">
+    {{#each result}}
+    <h2>{{this.name}}</h2>
+    <p><strong>Unit:</strong>{{this.unit}}</p>
+    <p><strong>Age:</strong>{{this.age}}</p>
+    <p><strong>Gender:</strong>{{this.gender}}</p>
+    <p><strong>Address:</strong>
+    {{this.address.street}}
+    {{this.address.city}}
+    {{this.address.state}}
+    {{this.address.zip}}
+    </p>
+    <p><strong>Phone:</strong>{{this.phoneNumber}}</p>
+    <p><strong>Email:</strong>{{this.email}}</p>
+    <div class="buttons">
+        <button class="edit"><a href="/edit?id={{this._id}}">Edit</a></button>
+       <button class="delete"><a href="/delete?id={{this._id}}">Edit</a></button>
+    </div>
+    {{/each}}
+</section>
+{{>footer}}

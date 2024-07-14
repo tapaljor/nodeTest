@@ -1,8 +1,10 @@
 {{>header}}
 <form action="/update" method="POST">
     {{#each result}}
+        <input type="hidden" id="_id" name="_id" value="{{this._id}}"><br><br>
+        <label for="unit">Unit:</label>
+        <input type="text" id="unit" name="unit" value="{{this.unit}}"><br><br>
         <label for="name">Name:</label>
-        <input type="text" id="_id" name="_id" value="{{this._id}}"><br><br>
         <input type="text" id="name" name="name" value="{{this.name}}"><br><br>
         <label for="age">Age:</label>
         <input type="number" id="age" name="age" value="{{this.age}}" ><br><br>
