@@ -1,0 +1,47 @@
+{{>header}}
+<a href="/parcels/add" class="button open">+</a>
+<a href="/parcels" class="button open">Open</a>
+<a href="/parcels/closed" class="button closed">Closed</a>
+{{#if currentUrl}}
+    <input type="number" name="OpenParcelSearch" id="openParcelSearch" placeholder="Open Parcel Search"/>
+{{else}}
+    <input type="number" name="closedParcelSearch" id="closedParcelSearch" placeholder="Closed Parcel Search"/>
+{{/if}}
+<section class="table-container" id="parcelContainer">
+    <table>
+        <thead>
+            <tr>
+                <th>Unit</th>
+                <th>Carrier</th>
+                <th>Place</th>
+                <th>Description</th>
+                <th>Logged At</th>
+                <th>Logged By</th>
+                <th>Pickup At</th>
+                <th>Issuer</th>
+                <th colspan="2"></th>
+            </tr>
+        </thead>
+        <tbody id="dynamicParcels">
+            {{#if parcels}}
+            {{#each parcels}}
+            <tr>
+                <td>{{this.unit}}</td>
+                <td>{{this.carrier}}</td>
+                <td>{{this.location}}</td>
+                <td>{{this.description}}</td>
+                <td>{{this.loggedAt}}</td>
+                <td>{{this.issuedBy}}</td>
+                <td>{{this.issuedAt}}</td>
+                <td>{{this.issuedBy}}</td>
+                {{#unless this.issuedBy}}
+                    <td><a href="/parcels/edit/{{this._id}}" title="Edit">&#9998;</a></td>
+                    <td><a href="/parcels/issue/{{this._id}}" title="Issue">&#10004;</a></td>
+                {{/unless}}
+            </tr>
+            {{/each}}
+            {{/if}}
+        </tbody>
+    </table>
+</section>
+{{>footer}}

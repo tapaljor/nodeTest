@@ -1,0 +1,86 @@
+{{>header}}
+<section class="table-container">
+    <table>
+        <tbody>
+            {{#if result}}
+            <tr>
+                <td>Building:</td><td>{{result.building}}-{{result.unit}}</td>
+                <td>Name:</td><td><a href="/residents/{{result._id}}">{{result.name}}</a></td>
+            </tr>
+            <tr>
+                <td>Age:</td><td>{{result.age}}</td>
+                <td>Gender:</td><td>{{result.gender}}</td>
+            </tr>
+            <tr>
+                <td>Phone:</td><td>{{result.phoneNumber}}</td>
+                <td>Email:</td><td>{{result.email}}</td>
+            </tr>
+            <tr>
+                <td>Address:</td>
+                <td>
+                    {{result.address.street}}
+                    {{result.address.city}}
+                    {{result.address.state}}
+                    {{result.address.zip}}
+                </td>
+            </tr>
+            <tr>
+                </td><td><a href="/residents/edit/{{result._id}}" title="Edit">&#9998;</a></td>
+                <td>
+                    <form action="/residents/delete/{{result._id}}?_method=DELETE" method="POST"
+                        onsubmit="return confirm('Are you sure you want to delete this resident?');">
+                        <button type="submit" style="color: red;">X</button>
+                    </form>
+                </td>
+            </tr>
+            {{/if}}
+        </tbody>
+    </table>
+    <table border="1" cellpadding="8" cellspacing="0">
+        <thead>
+            <tr><th colspan="6">Parking Used</th></tr>
+            <tr>
+                <th>Unit</th>
+                <th>License Plate</th>
+                <th>Visitor Name</th>
+                <th>Brand</th>
+                <th>Model</th>
+                <th>When</th>
+                <th>Issuer</th>
+                <th>Hours</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each parkingIssued}}
+            <tr>
+                <td>{{this.unit}}</td>
+                <td>{{this.plateNumber}}</td>
+                <td>{{this.visitorName}}</td>
+                <td>{{this.carBrand}}</td>
+                <td>{{this.carModel}}</td>
+                <td>{{this.issuedAt}}</td>
+                <td>{{this.issuedBy}}</td>
+                <td>{{this.hours}}</td>
+            </tr>
+            {{/each}}
+            <tr><td colspan="7"><b>Total</b></td><td><b>{{totalHours}}</b></td></tr>
+        </tbody>
+    </table>
+    <form method="POST" action="/parkings/add">
+        <input type="text" name="plateNumber" id="plateNumber" placeholder="License No" />
+        <input type="text" name="visitorName" id="visitorName" placeholder="Visitor name" />
+        <select id="carBrand" name="carBrand">
+            <option value="0">Select car brand</option>
+            {{#each carBrands}}
+            <option value="{{this.name}}">{{this.name}}</option>
+            {{/each}}
+        </select>
+        <select id="carModel" name="carModel"> //auto fill in javascript when a brand is selected
+            <option value="0">Select car model</option>
+        </select>
+        <input type="number" min="1" max="12" name="hours" required/>
+        <input type="hidden" name="unit" value="{{result.unit}}" />
+        <input type="submit" value="Save">
+    </form>
+</section>
+{{>footer}}

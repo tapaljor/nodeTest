@@ -1,0 +1,33 @@
+{{>header}}
+<section class="table-container">
+ <table>
+        <thead>
+            <tr>
+                <th>Unit</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Phone</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each result}}
+            <tr>
+                <td>{{this.building}}-{{this.unit}}</td>
+                <td><a href="/residents/{{this._id}}">{{this.name}}</a></td>
+                <td>{{this.age}}</td>
+                <td>{{this.gender}}</td>
+                <td>{{this.phoneNumber}}</td>
+                <td>{{this.email}}</td>
+                <td><a href="/residents/edit/{{this._id}}" title="Edit">&#9998;</a></td>
+                <td>
+                    <form action="/residents/delete/{{this._id}}?_method=DELETE" method="POST" onsubmit="return confirm('Are you sure you want to delete this resident?');">
+                        <button type="submit" style="color: red; background: none; border: none; cursor: pointer;">X</button>
+                    </form>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+</section>
+{{>footer}}

@@ -1,0 +1,26 @@
+{{>header}}
+<form action="/residents/add" method="POST">
+    <select id="building" name="building">
+        <option value="0">Select Building</option>
+        <option value="N">N</option>
+        <option value="S">S</option>
+        <option value="E">E</option>
+        <option value="W">W</option>
+    </select>
+    <input type="number" id="unitWhenRegister" name="unit" placeholder="Unit">
+    <input type="text" id="name" name="name" placeholder="Name">
+    <input type="number" id="age" name="age" placeholder="Age">
+    <select  id="gender" name="gender">
+        <option value="0">Select Gender</option>
+        <option>Male</option>
+        <option>Female</option>
+    </select>
+    <input type="text" id="street" name="address[street]" placeholder="Street">
+    <input type="text" id="city" name="address[city]" placeholder="City">
+    <input type="text" id="state" name="address[state]" placeholder="State/Provine">
+    <input type="text" id="zip" name="address[zip]" placeholder="Zip/Postal Code">
+    <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Phone">
+    <input type="email" id="email" name="email" placeholder="Email">
+    <input type="submit" value="Add">
+</form>
+{{>footer}}

@@ -1,144 +1,301 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
+/* Global Styles */
+* {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+#leftHead {
+    border: 1px solid purple;
+    padding: 5px;
+    border-radius: 5px;
+    color: purple
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 20px;
 }
-h1 {
+
+/* Header Styles */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    background-color: #fff;
+    border-bottom: 1px solid #eaeaea;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+main {
+    width: 90%;
+    margin: auto;
+    margin-top: 1rem;
+}
+
+/* Navigation Menu */
+nav {
+    position: relative;
+    font-size: .8rem;
+}
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+nav ul li {
+    margin: 0;
+}
+nav ul li a {
+    text-decoration: none;
     color: #333;
+    padding: 10px 15px;
 }
+
+/* Mobile Menu */
+/* Hide the checkbox */
+#menuToggle {
+    display: none;
+}
+
+/* Style the menu icon */
+.menu-icon {
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: none;
+}
+/* Default state of the menu (hidden on small screens) */
+nav ul {
+    display: flex; /* Default display for larger screens */
+    list-style: none;
+    gap: 10px;
+}
+/* Show menu as a dropdown for mobile view (hidden by default) */
+@media (max-width: 1300px) {
+    nav ul {
+        display: none; /* Hide the menu by default */
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background-color: white;
+        width: 200px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    /* Show the menu when the checkbox is checked */
+    #menuToggle:checked + .menu-icon + ul {
+        display: flex;
+    }
+    /* Show the menu icon on small screens */
+    .menu-icon {
+        display: block;
+    }
+    /* Menu item styling */
+    nav ul li a {
+        text-decoration: none;
+        color: #333;
+        padding: 10px;
+        display: block;
+    }
+    nav ul li a:hover {
+        background-color: #333;
+        color: white;
+    }
+}
+
+/* Table container */
 .table-container {
-    margin: 20px auto;
+    width: 100%;
+    overflow-x: auto; /* Enable horizontal scroll for smaller screens */
+    margin-bottom: 40px;
     max-width: 1200px;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
+
+/* Table styling */
 table {
     width: 100%;
     border-collapse: collapse;
     background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); /* Softer shadow for a clean look */
+    border-radius: 8px;
+    overflow: hidden;
 }
-th, td {
-    padding: 5px;
+
+/* Header cells */
+table th {
+    font-weight: bold;
+    padding: 10px; /* Smaller padding for a more compact header */
+    font-size: 0.9rem; /* Smaller font size for header */
+    text-align: left;
+    border-bottom: 1px solid #000; /* Stronger border between header and content */
+    border-top: 1px solid #000; /* Stronger border between header and content */
+}
+
+/* Table cells */
+table td {
+    padding: 10px; /* Smaller padding for table cells */
     text-align: left;
     border-bottom: 1px solid #ddd;
+    font-size: 0.9rem; /* Slightly smaller font size for cells */
 }
-th {
-    background-color: #333;
-    color: white;
+/* Zebra striping for rows */
+table tr:nth-child(even) {
+    background-color: #f9f9f9; /* Light grey for even rows */
 }
-tr:nth-child(even) {
-    background-color: #f2f2f2;
+
+/* No border styling for the last row */
+table tr:last-child td {
+    border-bottom: none;
 }
-tr:hover {
-    background-color: #e9e9e9;
+table td a {
+    text-decoration: none;
+    color: #000;
 }
-header, main {
-    display: grid;
-    grid-template-columns: 1fr 5fr;
-    gap: 1rem;
-}
-#leftHead {
-    grid-column: 1/2;
-    border: 1px solid red;
-}
-#rightHead {
-    grid-column: 2/3;
-    border: 1px solid green;
-} 
-aside {
-    grid-column: 1/2;
-    border: 1px solid pink;
-}
-aside ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-article {
-    grid-column: 2/3;
-    border: 1px solid black;
-}
-#rightHead {
-    position: relative;
-    display: inline-block;
-}
-#searchName {
-    padding: 10px;
-    width: 200px;
-    border: 1px solid #ccc;
+
+/* Message Section */
+#message {
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid gray;
     border-radius: 5px;
 }
+
+/* Right Head Container */
+#rightHead {
+    position: relative; /* To allow the absolute positioning of the searchResult */
+    display: flex;
+    justify-content: flex-end; /* Aligns the search input to the right */
+    align-items: center;
+    width: 100%;
+    max-width: 400px; /* Optional: Limit the width of the search area */
+}
+
+/* Search Input */
+#searchName {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+#searchName:focus {
+    border-color: #333; /* Change border color when input is focused */
+}
+
+/* Styles for the search result dropdown */
 #searchResult {
     position: absolute;
-    background-color: gray;
-    width: 90%;
-    z-index: 1000;
-    max-height: 200px;
-    overflow-y: auto;
-    display: none; /* Initially hide the search results */
+    top: 100%; /* Positions the result right below the input */
+    left: 0;
+    width: 100%; /* Make it as wide as the search input */
+    max-height: 200px; /* Limit the height so it doesn’t overflow the page */
+    overflow-y: auto; /* Add scroll if results exceed max-height */
+    background-color: white;
+    border: 1px solid #ccc;
+    z-index: 1000; /* Ensures it stays above other elements */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    display: none; /* Initially hidden */
 }
+
 #searchResult.visible {
-    display: block; /* Show the search results when the input field is focused or has content */
+    display: block; /* Show results when the class 'visible' is added */
 }
+
 #searchResult a {
     display: block;
     padding: 10px;
-    text-decoration: none;
     color: #333;
-}
-#searchResult a:hover {
-    background-color: #eee;
-}
-#searchName:focus + #searchResult {
-    display: block; /* Show the search results when the input field is focused */
-}
-.menu {
-    background-color: #333;
-    overflow: hidden;
-    transition: width 0.3s ease;
-}
-.menu ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-.menu ul li a {
-    display: block;
-    padding: 15px;
-    color: white;
-    text-decoration: none;
-}
-.menu ul li a:hover {
-    background-color: #575757;
-}
-.menu-icon {
-    display: none;
-    font-size: 30px;
-    color: white;
-    padding: 15px;
-    cursor: pointer;
-}
-#menuToggle {
-    display: none;
-}
-#menuToggle:checked + label + ul {
-    display: block;
-}
-main {
-    flex: 1;
+    border-bottom: 1px solid #eee;
 }
 
-@media (max-width: 768px) {
-    body {
-        flex-direction: column;
+#searchResult a:hover {
+    background-color: #f7f7f7;
+    color: #000;
+}
+/* Basic form styling */
+form {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border-radius: 8px;
+}
+form label {
+    padding-right: 1rem;
+}
+input,
+form input,
+form select {
+    width: 15rem;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; /* Padding won't increase input size */
+    margin: 0 10px 10px 0; /* Add some margin between input fields */
+}
+/* Input fields on focus */
+input:focus,
+form input:focus,
+form select:focus {
+    outline: none;
+    border-color: #000; /* Blue border on focus */
+}
+/* Submit button */
+form input[type="submit"] {
+    background-color: #333; /* Dark background */
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+/* Submit button hover effect */
+form input[type="submit"]:hover {
+    background-color: #555;
+}
+form button {
+    border: none;
+    background-color: transparent;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 1000px) {
+    form input,
+    form select {
+        flex: 1 1 100%; /* Ensure inputs take full width on small screens */
     }
-    .menu ul {
-        display: none;
-    }
-    .menu-icon {
-        display: block;
-        background-color: #333;
-    }
+}
+
+/* Base button styling */
+.button {
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border: 1px solid #000;
+    border-radius: 5px;
+    color: #000;
+}
+
+/* Open Button */
+.open:hover {
+    background-color: darkgreen;
+}
+.closed:hover {
+    background-color: darkred;
+}
+
+/*footer*/
+footer {
 }

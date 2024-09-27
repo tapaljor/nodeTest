@@ -1,29 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resident</title>
-    <link rel="stylesheet" href="css/styles.css"/>
-    <script src="js/script.js" defer></script>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <script src="/js/script.js" defer></script>
 </head>
+
 <body>
     <header>
-        <div id="leftHead">LOGO</div>
+        <div id="leftHead">TC</div>
         <div id="rightHead">
-            <input type="text" id="searchName" name="searchName" placeholder="Search Name"/>
+            <input type="text" id="searchName" name="searchName" placeholder="Search Name" />
             <div id="searchResult"></div>
         </div>
-    </header>
-    <main> 
-        <aside>
-            <nav class="menu">
+        <nav>
             <input type="checkbox" id="menuToggle">
-            <label for="menuToggle" class="menu-icon">&#9776;</label>
+            <label for="menuToggle" class="menu-icon">///</label>
             <ul>
-                <li><a href="/displayAll">DISPLAY ALL</a></li>
-                <li><a href="/add">ADD</a></li>
+                <li><a href="/residents">RESIDENTS</a></li>
+                <li><a href="/residents/add">ADD RESIDENT</a></li>
+                <li><a href="/parcels">PARCELS</a></li>
+                <li><a href="/parcels/add">ADD PARCELS</a></li>
+                {{#if isLoggedIn}}
+                <li><a href="/logout">LOGOUT</a></li>
+                {{else}}
+                <li><a href="/">LOGIN</a></li>
+                {{/if}}
             </ul>
-            </nav>
-        </aside>
-        <article>
+        </nav>
+    </header>
+    <main>
+    <article>
+        <section id="message">
+        {{#if message}}
+            <p style="color: {{color}};">
+                {{message}}
+            </p>
+        {{/if}}
+        </section>

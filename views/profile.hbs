@@ -1,8 +1,9 @@
 {{>header}}
 <section class="profile">
+    <div class="personalInformation">
     {{#each result}}
     <h2>{{this.name}}</h2>
-    <p><strong>Unit:</strong>{{this.unit}}</p>
+    <p><strong>Unit:</strong>{{this.building}}-{{this.unit}}</p>
     <p><strong>Age:</strong>{{this.age}}</p>
     <p><strong>Gender:</strong>{{this.gender}}</p>
     <p><strong>Address:</strong>
@@ -18,5 +19,27 @@
        <button class="delete"><a href="/delete?id={{this._id}}">Edit</a></button>
     </div>
     {{/each}}
+    </div>
+    <div class="parkingInformation">
+        <h2>Parking Information</h2>
+        <form method="POST" action="/registerParking">
+        {{#each result}}
+        <input type="text" name="residentId" value="{{this._id}}"/>
+        <input type="date" name="toDate" placeholder="To Date"/>
+        <input type="time" name="toTime" placeholder="To Time"/>
+        <input type="text" name="plateNumber" placeholder="Plate number"/>
+        <button>Save</button>
+        {{/each}}
+        <ul>
+        {{#each parkingResult}}
+        <li>
+            {{this.toDate}}
+            {{this.toTime}}
+            {{this.plateNumber}}
+        </li>
+        {{/each}}
+        </ul>
+        </form>
+    </div>
 </section>
 {{>footer}}
