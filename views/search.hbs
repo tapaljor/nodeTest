@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {{>header}}
 <section class="table-container">
  <table>
@@ -35,3 +36,42 @@
         </tbody>
 </section>
 {{>footer}}
+=======
+{{>header}}
+<section class="table-container">
+ <table>
+        <thead>
+            <tr>
+                <th>Unit</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Street</th>
+                <th>City</th>
+                <th>State</th>
+                <th>ZIP</th>
+                <th>Phone</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each result}}
+            <tr>
+                <td>{{this.unit}}</td>
+                <td><a href="/displayOne?id={{this._id}}">{{this.name}}</a></td>
+                <td>{{this.age}}</td>
+                <td>{{this.gender}}</td>
+                <td>{{this.address.street}}</td>
+                <td>{{this.address.city}}</td>
+                <td>{{this.address.state}}</td>
+                <td>{{this.address.zip}}</td>
+                <td>{{this.phoneNumber}}</td>
+                <td>{{this.email}}</td>
+                <td><a href="/edit?id={{this._id}}">Edit</a></td>
+                <td><a href="/delete?id={{this._id}}" style="color: red;">Delete</a></td>
+            </tr>
+            {{/each}}
+        </tbody>
+</section>
+{{>footer}}
+>>>>>>> origin/main
