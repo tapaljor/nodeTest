@@ -1,4 +1,4 @@
-/* Global Styling */
+/* Global Styles */
 * {
     margin: 0;
     padding: 0;
@@ -8,8 +8,9 @@
     border: 1px solid purple;
     padding: 5px;
     border-radius: 5px;
-    color: purple;
+    color: purple
 }
+
 body {
     font-family: 'Arial', sans-serif;
     color: #333;
@@ -18,6 +19,7 @@ body {
     align-items: center;
     padding: 20px;
 }
+
 /* Header Styles */
 header {
     display: flex;
@@ -295,3 +297,5 @@ form button {
 }
 
 /*footer*/
+footer {
+}
