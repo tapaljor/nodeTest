@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* Global Styling */
 * {
     margin: 0;
@@ -297,3 +298,149 @@ form button {
 /*footer*/
 footer {
 }
+=======
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 20px;
+}
+h1 {
+    color: #333;
+}
+.table-container {
+    margin: 20px auto;
+    max-width: 1200px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+}
+th, td {
+    padding: 5px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+th {
+    background-color: #333;
+    color: white;
+}
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+tr:hover {
+    background-color: #e9e9e9;
+}
+header, main {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    gap: 1rem;
+}
+#leftHead {
+    grid-column: 1/2;
+    border: 1px solid red;
+}
+#rightHead {
+    grid-column: 2/3;
+    border: 1px solid green;
+} 
+aside {
+    grid-column: 1/2;
+    border: 1px solid pink;
+}
+aside ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+article {
+    grid-column: 2/3;
+    border: 1px solid black;
+}
+#rightHead {
+    position: relative;
+    display: inline-block;
+}
+#searchName {
+    padding: 10px;
+    width: 200px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+#searchResult {
+    position: absolute;
+    background-color: gray;
+    width: 90%;
+    z-index: 1000;
+    max-height: 200px;
+    overflow-y: auto;
+    display: none; /* Initially hide the search results */
+}
+#searchResult.visible {
+    display: block; /* Show the search results when the input field is focused or has content */
+}
+#searchResult a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #333;
+}
+#searchResult a:hover {
+    background-color: #eee;
+}
+#searchName:focus + #searchResult {
+    display: block; /* Show the search results when the input field is focused */
+}
+.menu {
+    background-color: #333;
+    overflow: hidden;
+    transition: width 0.3s ease;
+}
+.menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+.menu ul li a {
+    display: block;
+    padding: 15px;
+    color: white;
+    text-decoration: none;
+}
+.menu ul li a:hover {
+    background-color: #575757;
+}
+.menu-icon {
+    display: none;
+    font-size: 30px;
+    color: white;
+    padding: 15px;
+    cursor: pointer;
+}
+#menuToggle {
+    display: none;
+}
+#menuToggle:checked + label + ul {
+    display: block;
+}
+main {
+    flex: 1;
+}
+
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+    }
+    .menu ul {
+        display: none;
+    }
+    .menu-icon {
+        display: block;
+        background-color: #333;
+    }
+}
+>>>>>>> origin/main
